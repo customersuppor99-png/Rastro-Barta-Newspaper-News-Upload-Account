@@ -22,28 +22,27 @@
       theme: {
         extend: {
           colors: {
-            royal: {
-              950: '#03110E',
-              900: '#07211B',
-              800: '#0D352C',
-              700: '#154D40',
+            velvet: {
+              950: '#070B19',
+              900: '#0E1630',
+              800: '#17234A',
+              700: '#23346B',
             },
-            brass: {
-              200: '#FBF0C9',
-              300: '#F5DF96',
-              400: '#E5BF53',
-              500: '#C89B3C',
-              600: '#A37820',
+            amberGold: {
+              200: '#FEF0B8',
+              300: '#F8DC78',
+              400: '#EBC238',
+              500: '#D4A017',
+              600: '#A97B0C',
             },
-            ivory: {
-              50: '#FDFBF7',
-              100: '#F6F1E7',
-              200: '#EAE1CE',
+            silk: {
+              50: '#F9FAFC',
+              100: '#EEF2F8',
+              200: '#DCE3EE',
             },
-            crimson: {
-              500: '#DC2626',
-              600: '#B91C1C',
-              700: '#991B1B',
+            ruby: {
+              600: '#DC2626',
+              700: '#B91C1C',
             }
           },
           fontFamily: {
@@ -51,9 +50,8 @@
             serif: ['Noto Serif Bengali', 'serif'],
           },
           boxShadow: {
-            'brass': '0 10px 30px -5px rgba(200, 155, 60, 0.42)',
-            'brass-lg': '0 18px 45px -6px rgba(200, 155, 60, 0.58)',
-            'card': '0 16px 40px -12px rgba(3, 17, 14, 0.12)',
+            'neon-gold': '0 0 25px rgba(235, 194, 56, 0.55), 0 12px 32px rgba(212, 160, 23, 0.45)',
+            'card': '0 18px 42px -12px rgba(7, 11, 25, 0.14)',
           }
         }
       }
@@ -63,8 +61,8 @@
   <style>
     body {
       font-family: 'Hind Siliguri', sans-serif;
-      background-color: #FDFBF7;
-      color: #0B1916;
+      background: linear-gradient(180deg, #F4F7FC 0%, #EEF2F9 50%, #F8FAFD 100%);
+      color: #0A1024;
       overflow-x: hidden;
     }
 
@@ -72,54 +70,84 @@
       font-family: 'Noto Serif Bengali', serif;
     }
 
-    /* Metallic Antique Gold Button */
-    .btn-brass {
-      background: linear-gradient(135deg, #C89B3C 0%, #F1CF6D 50%, #B08122 100%);
-      background-size: 200% auto;
-      color: #03110E;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn-brass:hover {
-      background-position: right center;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px -4px rgba(200, 155, 60, 0.6);
-    }
-
-    /* Hero Editorial Grid & Glow */
-    .hero-editorial {
-      background-color: #051914;
+    /* Rich Multi-Layered Royal Velvet & Gold Gradient Background */
+    .hero-velvet {
+      background-color: #070C1E;
       background-image:
-        radial-gradient(circle at 80% 20%, rgba(200, 155, 60, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 12% 85%, rgba(21, 77, 64, 0.60) 0%, transparent 50%),
+        radial-gradient(circle at 80% 18%, rgba(235, 194, 56, 0.24) 0%, transparent 45%),
+        radial-gradient(circle at 18% 78%, rgba(56, 97, 214, 0.34) 0%, transparent 52%),
+        radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.14) 0%, transparent 55%),
         linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      background-size: 100% 100%, 100% 100%, 100% 100%, 42px 42px, 42px 42px;
     }
 
-    /* Sample Watermark Stamp */
+    /* Continuous Lighting & Shimmer Apply Button */
+    .btn-apply-glow {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(120deg, #D4A017 0%, #FCE38A 35%, #EBC238 65%, #B8860B 100%);
+      background-size: 250% auto;
+      color: #070B19;
+      animation: goldGradientShift 2.8s linear infinite, applyFloatGlow 2s ease-in-out infinite;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-apply-glow::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent);
+      transform: rotate(22deg);
+      animation: lightBeamSweep 2.2s ease-in-out infinite;
+    }
+
+    @keyframes goldGradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes lightBeamSweep {
+      0% { left: -75%; }
+      60% { left: 135%; }
+      100% { left: 135%; }
+    }
+
+    @keyframes applyFloatGlow {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 0 18px rgba(248, 220, 120, 0.65), 0 10px 28px rgba(212, 160, 23, 0.45);
+      }
+      50% {
+        transform: translateY(-7px) scale(1.03);
+        box-shadow: 0 0 36px rgba(252, 227, 138, 0.95), 0 18px 42px rgba(212, 160, 23, 0.72);
+      }
+    }
+
+    .btn-apply-glow:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 0 42px rgba(252, 227, 138, 1), 0 20px 45px rgba(212, 160, 23, 0.85);
+    }
+
+    /* Sample Stamp */
     .sample-stamp {
-      border: 2.5px solid rgba(185, 28, 28, 0.80);
-      color: rgba(185, 28, 28, 0.90);
+      border: 2.5px solid rgba(220, 38, 38, 0.85);
+      color: rgba(220, 38, 38, 0.92);
       transform: rotate(-14deg);
       letter-spacing: 0.12em;
     }
 
-    /* Floating Card Animation */
+    /* Floating ID Card */
     @keyframes floatCard {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-7px); }
     }
     .animate-float {
       animation: floatCard 4.5s ease-in-out infinite;
-    }
-
-    /* Pulse Gold Ring */
-    @keyframes pulseBrass {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(200, 155, 60, 0.55); }
-      50% { box-shadow: 0 0 0 13px rgba(200, 155, 60, 0); }
-    }
-    .pulse-brass {
-      animation: pulseBrass 2.3s infinite;
     }
 
     /* Modal Pop */
@@ -130,113 +158,52 @@
     .animate-pop {
       animation: popIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-
-    /* Voice Wave Bars */
-    @keyframes wave {
-      0%, 100% { height: 5px; }
-      50% { height: 15px; }
-    }
-    .voice-bar {
-      width: 3px;
-      background-color: #E5BF53;
-      border-radius: 99px;
-      animation: wave 0.85s infinite ease-in-out;
-    }
-    .voice-bar:nth-child(2) { animation-delay: 0.2s; }
-    .voice-bar:nth-child(3) { animation-delay: 0.4s; }
   </style>
 </head>
-<body class="antialiased selection:bg-brass-500 selection:text-royal-950">
+<body class="antialiased selection:bg-amberGold-400 selection:text-velvet-950">
 
-  <!-- ==================== 1. TOP URGENCY COUNTDOWN CLOCK BAR ==================== -->
-  <div class="bg-gradient-to-r from-royal-950 via-crimson-700 to-royal-950 text-white border-b border-brass-400/40 py-2.5 px-3 sm:px-6 relative z-50">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
-      
-      <!-- Left: Live Urgency Notice -->
-      <div class="flex items-center justify-center md:justify-start gap-2 text-xs sm:text-sm font-semibold">
-        <span class="inline-flex items-center gap-1.5 bg-white text-crimson-700 px-2.5 py-0.5 rounded-full font-extrabold text-[11px] sm:text-xs shadow">
-          <span class="w-2 h-2 rounded-full bg-crimson-600 animate-ping"></span>
-          চূড়ান্ত সময়সীমা
-        </span>
-        <span class="text-ivory-50">সাংবাদিক প্রতিনিধি নিয়োগের আবেদন সময় শেষ হতে চলেছে!</span>
-      </div>
-
-      <!-- Center: Live Ticking Countdown Clock -->
-      <div class="flex items-center justify-center gap-1.5 sm:gap-2">
-        <span class="text-[11px] sm:text-xs text-brass-200 font-medium hidden sm:inline">বাকি সময়:</span>
-        <div class="flex items-center gap-1 font-heading font-extrabold text-xs sm:text-sm">
-          <div class="bg-royal-950/90 border border-brass-400/60 px-2 py-0.5 rounded text-brass-300">
-            <span id="timer-hours">০৫</span> <span class="text-[10px] font-sans font-normal text-white">ঘণ্টা</span>
-          </div>
-          <span class="text-brass-300 font-bold">:</span>
-          <div class="bg-royal-950/90 border border-brass-400/60 px-2 py-0.5 rounded text-brass-300">
-            <span id="timer-minutes">৪২</span> <span class="text-[10px] font-sans font-normal text-white">মিনিট</span>
-          </div>
-          <span class="text-brass-300 font-bold">:</span>
-          <div class="bg-royal-950/90 border border-brass-400/60 px-2 py-0.5 rounded text-amber-300">
-            <span id="timer-seconds">৫৯</span> <span class="text-[10px] font-sans font-normal text-white">সেকেন্ড</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Voice Control Button -->
-      <div class="flex items-center justify-center">
-        <button id="voice-toggle-btn" type="button"
-                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-950/85 hover:bg-royal-900 border border-brass-400/50 text-brass-300 text-xs font-semibold transition-all">
-          <span id="voice-waves" class="hidden items-end gap-0.5 h-3.5">
-            <span class="voice-bar"></span>
-            <span class="voice-bar"></span>
-            <span class="voice-bar"></span>
-          </span>
-          <i id="voice-icon" data-lucide="volume-2" class="w-3.5 h-3.5 text-brass-400"></i>
-          <span id="voice-label">ভয়েস ঘোষণা</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ==================== 2. STICKY EDITORIAL HEADER ==================== -->
-  <header class="sticky top-0 z-40 bg-royal-900/95 backdrop-blur-md border-b-2 border-brass-500/45 shadow-xl">
+  <!-- ==================== 1. STICKY EDITORIAL HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-velvet-900/95 backdrop-blur-md border-b-2 border-amberGold-400/50 shadow-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         
         <!-- Logo & Masthead -->
         <a href="#home" class="flex items-center gap-3 group">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brass-300 via-brass-500 to-brass-600 p-0.5 shadow-brass flex-shrink-0">
-            <div class="w-full h-full bg-royal-950 rounded-[10px] flex flex-col items-center justify-center">
-              <span class="font-heading text-brass-400 font-extrabold text-xl leading-none">রা</span>
-              <span class="text-[8px] tracking-widest text-ivory-200 uppercase mt-0.5">বার্তা</span>
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amberGold-300 via-amberGold-400 to-amberGold-600 p-0.5 shadow-neon-gold flex-shrink-0">
+            <div class="w-full h-full bg-velvet-950 rounded-[10px] flex flex-col items-center justify-center">
+              <span class="font-heading text-amberGold-300 font-extrabold text-xl leading-none">রা</span>
+              <span class="text-[8px] tracking-widest text-silk-200 uppercase mt-0.5">বার্তা</span>
             </div>
           </div>
           <div>
-            <span class="font-heading text-xl sm:text-2xl font-extrabold text-white tracking-tight group-hover:text-brass-300 transition-colors block leading-tight">
+            <span class="font-heading text-xl sm:text-2xl font-extrabold text-white tracking-tight group-hover:text-amberGold-300 transition-colors block leading-tight">
               দৈনিক রাষ্ট্র বার্তা
             </span>
-            <p class="text-[11px] sm:text-xs text-brass-300 font-medium tracking-wide">
+            <p class="text-[11px] sm:text-xs text-amberGold-300 font-medium tracking-wide">
               সত্য, বস্তুনিষ্ঠতা ও জনস্বার্থে সাংবাদিকতা
             </p>
           </div>
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-6 text-[15px] font-semibold text-ivory-100">
-          <a href="#home" class="hover:text-brass-300 transition-colors">হোম & ID Card</a>
-          <a href="#media-law" class="hover:text-brass-300 transition-colors">মিডিয়া আইন ও সুরক্ষা</a>
-          <a href="#ai-newsroom" class="hover:text-brass-300 transition-colors">AI নিউজরুম</a>
-          <a href="#benefits" class="hover:text-brass-300 transition-colors">সুযোগ-সুবিধা</a>
-          <a href="#process" class="hover:text-brass-300 transition-colors">আবেদন প্রক্রিয়া</a>
+        <nav class="hidden lg:flex items-center gap-6 text-[15px] font-semibold text-silk-100">
+          <a href="#home" class="hover:text-amberGold-300 transition-colors">হোম & ভিডিও</a>
+          <a href="#id-card-section" class="hover:text-amberGold-300 transition-colors">ID Card নমুনা</a>
+          <a href="#media-law" class="hover:text-amberGold-300 transition-colors">মিডিয়া আইন ও সুরক্ষা</a>
+          <a href="#benefits" class="hover:text-amberGold-300 transition-colors">সুযোগ-সুবিধা</a>
+          <a href="#ai-newsroom" class="hover:text-amberGold-300 transition-colors">AI নিউজরুম</a>
+          <a href="#process" class="hover:text-amberGold-300 transition-colors">আবেদন প্রক্রিয়া</a>
         </nav>
 
         <!-- Header Action Button (#1) + Mobile Menu -->
         <div class="flex items-center gap-3">
           <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-             class="btn-brass inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base shadow-brass">
-            <span>আবেদন করুন</span>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 stroke-[2.5]"></i>
+             class="btn-apply-glow inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-extrabold text-sm sm:text-base">
+            <span class="relative z-10">আবেদন করুন</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 stroke-[2.6] relative z-10"></i>
           </a>
 
-          <button id="mobile-menu-btn" aria-label="মেনু খুলুন" class="lg:hidden p-2.5 rounded-lg bg-royal-800 text-brass-300 border border-brass-500/35">
+          <button id="mobile-menu-btn" aria-label="মেনু খুলুন" class="lg:hidden p-2.5 rounded-lg bg-velvet-800 text-amberGold-300 border border-amberGold-400/40">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -244,158 +211,311 @@
     </div>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-royal-950 border-t border-brass-500/25 px-4 pt-3 pb-5 space-y-2">
-      <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-ivory-100 hover:bg-royal-800 hover:text-brass-300 font-medium">হোম & ID Card নমুনা</a>
-      <a href="#media-law" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-ivory-100 hover:bg-royal-800 hover:text-brass-300 font-medium">মিডিয়া আইন ও আইনি সুরক্ষা</a>
-      <a href="#ai-newsroom" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-ivory-100 hover:bg-royal-800 hover:text-brass-300 font-medium">AI নিউজরুম</a>
-      <a href="#benefits" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-ivory-100 hover:bg-royal-800 hover:text-brass-300 font-medium">সাংবাদিক সুযোগ-সুবিধা</a>
-      <a href="#process" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-ivory-100 hover:bg-royal-800 hover:text-brass-300 font-medium">আবেদন প্রক্রিয়া</a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-velvet-950 border-t border-amberGold-400/25 px-4 pt-3 pb-5 space-y-2">
+      <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-silk-100 hover:bg-velvet-800 hover:text-amberGold-300 font-medium">হোম & ভিডিও বার্তা</a>
+      <a href="#id-card-section" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-silk-100 hover:bg-velvet-800 hover:text-amberGold-300 font-medium">সাংবাদিক ID Card নমুনা</a>
+      <a href="#media-law" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-silk-100 hover:bg-velvet-800 hover:text-amberGold-300 font-medium">মিডিয়া আইন ও আইনি সুরক্ষা</a>
+      <a href="#benefits" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-silk-100 hover:bg-velvet-800 hover:text-amberGold-300 font-medium">সাংবাদিক সুযোগ-সুবিধা</a>
+      <a href="#ai-newsroom" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-silk-100 hover:bg-velvet-800 hover:text-amberGold-300 font-medium">AI নিউজরুম</a>
+      <a href="#process" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-silk-100 hover:bg-velvet-800 hover:text-amberGold-300 font-medium">আবেদন প্রক্রিয়া</a>
     </div>
   </header>
 
-  <!-- ==================== 3. HERO SECTION WITH LIVE PRESS ID CARD SHOWCASE AT THE TOP ==================== -->
-  <section id="home" class="hero-editorial text-white pt-10 pb-16 sm:pt-16 sm:pb-24 relative overflow-hidden">
+  <!-- ==================== 2. HERO SECTION WITH AUTO-PLAYING SOUND VIDEO & LIGHTING APPLY CTA ==================== -->
+  <section id="home" class="hero-velvet text-white pt-8 pb-16 sm:pt-12 sm:pb-24 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <!-- Top Registration Pill -->
-      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-800/90 border border-brass-400/50 text-brass-300 text-xs sm:text-sm font-semibold shadow">
-          <i data-lucide="shield-check" class="w-4 h-4 text-brass-400"></i>
-          <span>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত জাতীয় সংবাদমাধ্যম</span>
+      <!-- Top Auto-Playing YouTube Video Box -->
+      <div class="max-w-4xl mx-auto mb-8">
+        <div class="bg-velvet-800/85 backdrop-blur-md border-2 border-amberGold-400/60 rounded-3xl p-3 sm:p-4 shadow-2xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 px-2 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+              <span class="text-amberGold-300 font-bold text-xs sm:text-sm tracking-wide">
+                দৈনিক রাষ্ট্র বার্তা — বিশেষ নিয়োগ ও পরিচিতি ভিডিও
+              </span>
+            </div>
+            <span id="audio-status-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-bold text-xs">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+              <span>অটো সাউন্ড সক্রিয়</span>
+            </span>
+          </div>
+
+          <!-- 16:9 YouTube Player Container -->
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border border-white/15 shadow-inner">
+            <div id="yt-player-container" class="w-full h-full"></div>
+          </div>
         </div>
-        <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-crimson-600/90 text-white text-xs font-bold">
-          <i data-lucide="flame" class="w-3.5 h-3.5"></i>
-          <span>আসন্ন ইউপি নির্বাচন বিশেষ নিয়োগ</span>
+
+        <!-- CONTINUOUSLY LIGHTING & FLOATING APPLY BUTTON RIGHT BELOW VIDEO (#2) -->
+        <div class="mt-7 sm:mt-8 text-center">
+          <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
+             class="btn-apply-glow w-full sm:w-auto inline-flex items-center justify-center gap-3.5 px-9 sm:px-12 py-4 sm:py-5 rounded-2xl font-extrabold text-xl sm:text-2xl border-2 border-amberGold-200 tracking-wide">
+            <i data-lucide="file-check-2" class="w-7 h-7 stroke-[2.6] relative z-10"></i>
+            <span class="relative z-10">চূড়ান্ত আবেদন জমা দিন</span>
+            <i data-lucide="arrow-right-circle" class="w-6 h-6 stroke-[2.5] relative z-10"></i>
+          </a>
+          <p class="text-amberGold-200 text-xs sm:text-sm font-semibold mt-3 flex items-center justify-center gap-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-amberGold-400"></i>
+            <span>সরাসরি অফিসিয়াল Google Form-এ আবেদন জমা দিতে ওপরের বাটনে ক্লিক করুন</span>
+          </p>
         </div>
       </div>
 
-      <!-- Two-Column Hero: Left Headline & CTA | Right Journalist ID Card & Documents Sample -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-        
-        <!-- Left Column (7 cols) -->
-        <div class="lg:col-span-7 text-center lg:text-left">
-          <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-extrabold leading-[1.18] tracking-tight text-white mb-5">
-            আপনিও যুক্ত হোন <span class="text-transparent bg-clip-text bg-gradient-to-r from-brass-200 via-brass-400 to-brass-500">দৈনিক রাষ্ট্র বার্তার</span> সাংবাদিক পরিবারে!
-          </h1>
+      <!-- INTEGRATED REGISTRATION BADGE + CONTINUOUS LIVE COUNTDOWN TIMER -->
+      <div class="max-w-4xl mx-auto mb-10">
+        <div class="bg-gradient-to-r from-velvet-900 via-velvet-800 to-velvet-900 border-2 border-amberGold-400/55 rounded-3xl p-4 sm:p-5 shadow-2xl">
           
-          <p class="text-base sm:text-xl text-ivory-100/90 leading-relaxed mb-6">
-            গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত দৈনিক রাষ্ট্র বার্তার সঙ্গে আধুনিক প্রযুক্তিনির্ভর সাংবাদিকতার নতুন যাত্রায় আপনাকে স্বাগতম। আসন্ন ইউনিয়ন পরিষদ (ইউপি) নির্বাচনসহ সারাদেশে মাঠপর্যায়ে সংবাদ সংগ্রহের জন্য প্রতিনিধি নিয়োগ চলছে।
-          </p>
-
-          <!-- Highlight Box -->
-          <div class="bg-royal-800/75 border-l-4 border-brass-400 p-4 sm:p-5 rounded-r-2xl mb-8 text-left">
-            <p class="text-ivory-50 text-sm sm:text-base leading-relaxed">
-              <strong class="text-brass-300">অভিনন্দন বার্তা:</strong> আবেদন যাচাই ও অনুমোদনের পর আপনার নামে <strong class="text-brass-300">QR-ভেরিফায়েড সাংবাদিক পরিচয়পত্র (ID Card)</strong>, <strong class="text-brass-300">নিয়োগপত্র ও প্রাতিষ্ঠানিক ডকুমেন্ট</strong> এবং <strong class="text-brass-300">সংবাদপত্রের অনলাইন অ্যাকাউন্ট</strong> প্রদান করা হবে।
-            </p>
+          <div class="flex flex-wrap items-center justify-center gap-2.5 pb-3.5 mb-3.5 border-b border-white/15">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-velvet-950/90 border border-amberGold-400/50 text-amberGold-300 text-xs sm:text-sm font-semibold">
+              <i data-lucide="shield-check" class="w-4 h-4 text-amberGold-400"></i>
+              <span>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত জাতীয় সংবাদমাধ্যম</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-ruby-600 text-white text-xs font-bold shadow">
+              <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+              <span>আসন্ন ইউপি নির্বাচন বিশেষ নিয়োগ</span>
+            </div>
           </div>
 
-          <!-- Primary Hero CTA Buttons (#2) -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-               class="btn-brass pulse-brass w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg sm:text-xl shadow-brass-lg">
-              <i data-lucide="file-check-2" class="w-6 h-6 stroke-[2.5]"></i>
-              <span>চূড়ান্ত আবেদন জমা দিন</span>
-            </a>
-            <a href="#media-law"
-               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-semibold text-base bg-royal-800/80 hover:bg-royal-700 text-ivory-50 border border-brass-400/40 transition-all">
-              <i data-lucide="scale" class="w-5 h-5 text-brass-400"></i>
-              <span>আইনি সুরক্ষা ও সুবিধা দেখুন</span>
-            </a>
+          <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-2 text-xs sm:text-sm font-semibold">
+              <span class="inline-flex items-center gap-1.5 bg-ruby-600 text-white px-2.5 py-0.5 rounded-full font-extrabold text-[11px] sm:text-xs shadow">
+                <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                চূড়ান্ত সময়সীমা
+              </span>
+              <span class="text-silk-50">সাংবাদিক প্রতিনিধি নিয়োগের আবেদন সময় শেষ হতে চলেছে!</span>
+            </div>
+
+            <div class="flex items-center justify-center gap-1.5 sm:gap-2">
+              <span class="text-[11px] sm:text-xs text-amberGold-200 font-medium">বাকি সময়:</span>
+              <div class="flex items-center gap-1 font-heading font-extrabold text-xs sm:text-sm">
+                <div class="bg-velvet-950 border border-amberGold-400/65 px-2.5 py-1 rounded-lg text-amberGold-300">
+                  <span id="timer-hours">০৫</span> <span class="text-[10px] font-sans font-normal text-white">ঘণ্টা</span>
+                </div>
+                <span class="text-amberGold-300 font-bold">:</span>
+                <div class="bg-velvet-950 border border-amberGold-400/65 px-2.5 py-1 rounded-lg text-amberGold-300">
+                  <span id="timer-minutes">৪২</span> <span class="text-[10px] font-sans font-normal text-white">মিনিট</span>
+                </div>
+                <span class="text-amberGold-300 font-bold">:</span>
+                <div class="bg-velvet-950 border border-amberGold-400/65 px-2.5 py-1 rounded-lg text-amber-300">
+                  <span id="timer-seconds">৫৯</span> <span class="text-[10px] font-sans font-normal text-white">সেকেন্ড</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Headline & Intro -->
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-extrabold leading-[1.18] tracking-tight text-white mb-5">
+          আপনিও যুক্ত হোন <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberGold-200 via-amberGold-400 to-amberGold-500">দৈনিক রাষ্ট্র বার্তার</span> সাংবাদিক পরিবারে!
+        </h1>
+        
+        <p class="text-base sm:text-xl text-silk-100/90 leading-relaxed mb-7 max-w-3xl mx-auto">
+          গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত দৈনিক রাষ্ট্র বার্তার সঙ্গে আধুনিক প্রযুক্তিনির্ভর সাংবাদিকতার নতুন যাত্রায় আপনাকে স্বাগতম। আসন্ন ইউনিয়ন পরিষদ (ইউপি) নির্বাচনসহ সারাদেশে মাঠপর্যায়ে সংবাদ সংগ্রহ ও পরিবেশনার জন্য আগ্রহী সাংবাদিক প্রতিনিধি যুক্ত করার উদ্যোগ নেওয়া হয়েছে।
+        </p>
+
+        <div class="bg-velvet-800/80 border-l-4 border-amberGold-400 p-4 sm:p-5 rounded-r-2xl mb-8 text-left max-w-3xl mx-auto">
+          <p class="text-silk-50 text-sm sm:text-base leading-relaxed">
+            <strong class="text-amberGold-300">অভিনন্দন বার্তা:</strong> দৈনিক রাষ্ট্র বার্তার সাংবাদিক প্রতিনিধি হওয়ার আগ্রহ প্রকাশ করার জন্য আপনাকে আন্তরিক অভিনন্দন ও শুভেচ্ছা। আবেদন যাচাই ও অনুমোদনের পর আপনার নামে <strong class="text-amberGold-300">QR-ভেরিফায়েড সাংবাদিক পরিচয়পত্র (ID Card)</strong>, <strong class="text-amberGold-300">গুরুত্বপূর্ণ প্রাতিষ্ঠানিক ডকুমেন্ট</strong> এবং <strong class="text-amberGold-300">সংবাদপত্রের অনলাইন অ্যাকাউন্ট</strong> প্রদান ও ব্যবহারের নির্দেশনা দেওয়া হবে।
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#id-card-section"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base bg-velvet-800/85 hover:bg-velvet-700 text-silk-50 border border-amberGold-400/40 transition-all">
+            <i data-lucide="id-card" class="w-5 h-5 text-amberGold-400"></i>
+            <span>সাংবাদিক ID Card ও ডকুমেন্ট নমুনা দেখুন</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. JOURNALIST ID CARD & OFFICIAL DOCUMENTS SAMPLE ==================== -->
+  <section id="id-card-section" class="py-16 sm:py-24 bg-silk-50 border-b border-silk-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-velvet-900 text-amberGold-300 text-xs sm:text-sm font-bold mb-3">
+          <i data-lucide="badge-check" class="w-4 h-4 text-amberGold-400"></i> অনুমোদন পরবর্তী প্রাপ্তিসমূহ
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-velvet-900 mb-4">
+          সাংবাদিক ID Card ও গুরুত্বপূর্ণ ডকুমেন্ট
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          আবেদন সম্পন্ন করার পর যাচাই ও অনুমোদন সাপেক্ষে একজন প্রতিনিধি নিচের ৭টি অফিসিয়াল সুবিধা ও ডকুমেন্ট লাভ করবেন:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-5 space-y-3">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">১</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">সাংবাদিক পরিচয়পত্র (ID Card)।</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">২</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">QR Code-সহ ডিজিটাল পরিচয়পত্র।</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">৩</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">গুরুত্বপূর্ণ প্রাতিষ্ঠানিক ডকুমেন্ট ও নিয়োগপত্র।</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">৪</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">সংবাদপত্রের অনলাইন অ্যাকাউন্ট।</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">৫</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">ব্যক্তিগত সাংবাদিক ড্যাশবোর্ড।</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">৬</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">সংবাদ জমা ও প্রকাশের নিয়মাবলি।</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-silk-200 shadow-sm">
+            <span class="w-9 h-9 rounded-xl bg-velvet-900 text-amberGold-300 font-bold flex items-center justify-center flex-shrink-0">৭</span>
+            <span class="font-bold text-velvet-900 text-base sm:text-lg">প্রয়োজনীয় প্রশিক্ষণ ও নির্দেশনা।</span>
           </div>
         </div>
 
-        <!-- Right Column (5 cols): IMMEDIATE JOURNALIST ID CARD & APPOINTMENT LETTER SAMPLE -->
-        <div class="lg:col-span-5">
-          <div class="bg-royal-800/60 backdrop-blur-md border border-brass-400/45 rounded-3xl p-5 sm:p-6 shadow-2xl relative">
-            
-            <!-- Top Label -->
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1.5 text-brass-300 font-bold text-xs sm:text-sm">
-                <i data-lucide="badge-check" class="w-4 h-4 text-brass-400"></i> অনুমোদন পরবর্তী প্রাপ্ত ID Card
-              </span>
-              <span class="px-2.5 py-0.5 rounded-full bg-red-600 text-white text-[11px] font-extrabold tracking-wide">
-                নমুনা / SAMPLE
-              </span>
+        <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Sample ID Card -->
+          <div class="bg-white p-5 rounded-3xl border border-silk-200 shadow-card relative">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-velvet-800">ডিজিটাল প্রেস কার্ড</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-red-100 text-ruby-700 border border-red-300 text-xs font-bold">নমুনা (SAMPLE)</span>
             </div>
 
-            <!-- Floating Press ID Card -->
-            <div class="animate-float bg-white text-royal-950 rounded-2xl overflow-hidden shadow-2xl border-2 border-brass-400 max-w-[290px] mx-auto relative">
-              
-              <!-- Watermark Stamp -->
+            <div class="animate-float bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-velvet-900 relative mx-auto max-w-[260px]">
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
                 <span class="sample-stamp px-3 py-1 rounded font-extrabold text-xl uppercase bg-white/80">নমুনা / SAMPLE</span>
               </div>
 
-              <!-- Card Header -->
-              <div class="bg-gradient-to-r from-royal-950 via-royal-900 to-royal-950 text-white p-3.5 text-center border-b-4 border-brass-500">
-                <p class="text-[10px] text-brass-300">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত</p>
-                <h2 class="font-heading font-extrabold text-lg text-brass-400 leading-tight">দৈনিক রাষ্ট্র বার্তা</h2>
-                <span class="inline-block mt-1 px-3 py-0.5 bg-crimson-600 text-white text-[10px] font-extrabold tracking-widest rounded">
-                  PRESS IDENTITY CARD
-                </span>
+              <div class="bg-velvet-900 text-white p-3.5 text-center border-b-4 border-amberGold-500">
+                <p class="text-[10px] text-amberGold-300">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার নিবন্ধিত</p>
+                <h4 class="font-heading font-bold text-base text-amberGold-300">দৈনিক রাষ্ট্র বার্তা</h4>
+                <span class="inline-block mt-1 px-2.5 py-0.5 bg-ruby-600 text-white text-[10px] font-bold tracking-widest rounded">PRESS ID CARD</span>
               </div>
 
-              <!-- Card Body -->
-              <div class="p-4 text-center bg-gradient-to-b from-ivory-50 to-white">
-                <div class="w-20 h-20 mx-auto rounded-full bg-royal-900/10 border-2 border-brass-500 flex items-center justify-center mb-2.5 shadow-inner">
-                  <i data-lucide="user-check" class="w-10 h-10 text-royal-900"></i>
+              <div class="p-4 text-center">
+                <div class="w-20 h-20 mx-auto rounded-full bg-silk-100 border-2 border-amberGold-500 flex items-center justify-center mb-2.5 overflow-hidden">
+                  <i data-lucide="user-check" class="w-10 h-10 text-velvet-800"></i>
                 </div>
-                <h3 class="font-bold text-royal-950 text-base">মোঃ সাংবাদিক প্রতিনিধি (নমুনা)</h3>
-                <p class="text-xs font-bold text-brass-600 mb-2.5">জেলা / উপজেলা / বিশেষ প্রতিনিধি</p>
+                <p class="font-bold text-velvet-900 text-base">মোঃ প্রতিনিধি নাম (নমুনা)</p>
+                <p class="text-xs font-semibold text-amberGold-600 mb-2">জেলা / উপজেলা প্রতিনিধি</p>
 
-                <div class="text-[11px] text-left bg-ivory-100/90 p-2.5 rounded-xl space-y-1 border border-ivory-200">
-                  <p><span class="text-slate-500">কার্ড নং:</span> <strong class="text-royal-950">DRB-BD-2026-101</strong></p>
-                  <p><span class="text-slate-500">কর্মক্ষেত্র:</span> <strong class="text-royal-950">সমগ্র বাংলাদেশ</strong></p>
-                  <p><span class="text-slate-500">রক্তের গ্রুপ:</span> <strong class="text-crimson-600">O+ (Positive)</strong></p>
+                <div class="text-[11px] text-left bg-silk-50 p-2.5 rounded-xl space-y-1 border border-silk-200">
+                  <p><span class="text-slate-500">ID No:</span> <strong class="text-velvet-900">DRB-2026-0109</strong></p>
+                  <p><span class="text-slate-500">কর্মক্ষেত্র:</span> <strong class="text-velvet-900">বাংলাদেশ</strong></p>
+                  <p><span class="text-slate-500">রক্তের গ্রুপ:</span> <strong class="text-ruby-600">O+ (Positive)</strong></p>
                 </div>
 
-                <!-- QR Code & Verification Strip -->
-                <div class="mt-3 pt-2.5 border-t border-ivory-200 flex items-center justify-between">
+                <div class="mt-3 pt-2.5 border-t border-silk-200 flex items-center justify-between">
                   <div class="text-left">
-                    <p class="text-[9px] text-slate-500">অনলাইন QR ভেরিফিকেশন</p>
-                    <p class="text-[10px] font-extrabold text-emerald-700 flex items-center gap-1">
-                      <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> সক্রিয় ও বৈধ
+                    <p class="text-[9px] text-slate-500">QR স্ক্যান করে যাচাইযোগ্য</p>
+                    <p class="text-[10px] font-bold text-emerald-700 flex items-center gap-1">
+                      <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফায়েড কার্ড
                     </p>
                   </div>
-                  <div class="w-11 h-11 bg-royal-950 rounded-xl flex items-center justify-center shadow">
-                    <i data-lucide="qr-code" class="w-7 h-7 text-brass-400"></i>
+                  <div class="w-10 h-10 bg-velvet-900 text-white rounded-lg flex items-center justify-center">
+                    <i data-lucide="qr-code" class="w-7 h-7 text-amberGold-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-center text-xs text-slate-500 mt-3">* এটি শুধুমাত্র প্রদর্শনের জন্য একটি নমুনা ডিজাইন</p>
+          </div>
+
+          <!-- Sample Dashboard -->
+          <div class="bg-white p-5 rounded-3xl border border-silk-200 shadow-card flex flex-col justify-between relative">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-velvet-800">সাংবাদিক অনলাইন ড্যাশবোর্ড</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-red-100 text-ruby-700 border border-red-300 text-xs font-bold">নমুনা (SAMPLE)</span>
+              </div>
+
+              <div class="bg-velvet-950 text-white rounded-2xl p-4 shadow-xl border border-amberGold-500/45 relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                  <span class="sample-stamp px-3 py-1 rounded font-extrabold text-lg uppercase bg-velvet-950/85">নমুনা ড্যাশবোর্ড</span>
+                </div>
+
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <span class="text-[10px] text-amberGold-300 font-semibold">Reporter Portal v2.6</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5 mb-3">
+                  <div class="bg-velvet-800/90 p-2.5 rounded-xl border border-white/10">
+                    <p class="text-[10px] text-silk-200/75">প্রকাশিত সংবাদ</p>
+                    <p class="text-lg font-extrabold text-amberGold-300">৪৮টি</p>
+                  </div>
+                  <div class="bg-velvet-800/90 p-2.5 rounded-xl border border-white/10">
+                    <p class="text-[10px] text-silk-200/75">অটো ফটোকার্ড</p>
+                    <p class="text-lg font-extrabold text-emerald-400">সক্রিয়</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                  <div class="bg-white/5 p-2.5 rounded-xl flex items-center justify-between">
+                    <span class="flex items-center gap-2 text-silk-100">
+                      <i data-lucide="pen-tool" class="w-3.5 h-3.5 text-amberGold-300"></i> নতুন সংবাদ জমা দিন
+                    </span>
+                    <span class="px-2 py-0.5 bg-amberGold-400 text-velvet-950 rounded font-bold text-[10px]">AI সহায়ক</span>
+                  </div>
+                  <div class="bg-white/5 p-2.5 rounded-xl flex items-center justify-between">
+                    <span class="flex items-center gap-2 text-silk-100">
+                      <i data-lucide="image" class="w-3.5 h-3.5 text-amberGold-300"></i> অটো ফটোকার্ড ডাউনলোড
+                    </span>
+                    <span class="text-[10px] text-emerald-400">প্রস্তুত</span>
+                  </div>
+                  <div class="bg-white/5 p-2.5 rounded-xl flex items-center justify-between">
+                    <span class="flex items-center gap-2 text-silk-100">
+                      <i data-lucide="file-text" class="w-3.5 h-3.5 text-amberGold-300"></i> নিয়োগপত্র ও ডকুমেন্ট
+                    </span>
+                    <span class="text-[10px] text-amberGold-300">PDF</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Mini Deliverables Strip below ID Card -->
-            <div class="mt-4 pt-3.5 border-t border-white/15 grid grid-cols-3 gap-2 text-center text-[11px] text-ivory-100">
-              <div class="bg-royal-950/60 p-2 rounded-xl border border-brass-500/25">
-                <i data-lucide="file-badge" class="w-4 h-4 text-brass-400 mx-auto mb-1"></i>
-                <span>নিয়োগপত্র</span>
-              </div>
-              <div class="bg-royal-950/60 p-2 rounded-xl border border-brass-500/25">
-                <i data-lucide="layout-dashboard" class="w-4 h-4 text-brass-400 mx-auto mb-1"></i>
-                <span>নিউজ পোর্টাল</span>
-              </div>
-              <div class="bg-royal-950/60 p-2 rounded-xl border border-brass-500/25">
-                <i data-lucide="car" class="w-4 h-4 text-brass-400 mx-auto mb-1"></i>
-                <span>প্রেস স্টিকার</span>
-              </div>
-            </div>
-
+            <p class="text-center text-xs text-slate-500 mt-3">* অনুমোদনের পর নিজস্ব ইউজার আইডি ও পাসওয়ার্ড প্রদান করা হবে</p>
           </div>
-        </div>
 
+        </div>
       </div>
+
+      <!-- CTA Button (#3) -->
+      <div class="text-center mt-14">
+        <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
+           class="btn-apply-glow inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl font-extrabold text-lg sm:text-xl">
+          <i data-lucide="check-square" class="w-5 h-5 stroke-[2.5] relative z-10"></i>
+          <span class="relative z-10">চূড়ান্ত আবেদন সম্পন্ন করুন</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
   <!-- ==================== 4. MEDIA LAW, PRESS PROTECTION & LEGAL RIGHTS ==================== -->
-  <section id="media-law" class="py-16 sm:py-24 bg-ivory-50 border-b border-ivory-200">
+  <section id="media-law" class="py-16 sm:py-24 bg-silk-100 border-b border-silk-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-900 text-brass-300 text-xs sm:text-sm font-bold mb-3">
-          <i data-lucide="scale" class="w-4 h-4 text-brass-400"></i> সংবাদকর্মীদের আইনি সুরক্ষা ও অধিকার
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-velvet-900 text-amberGold-300 text-xs sm:text-sm font-bold mb-3">
+          <i data-lucide="scale" class="w-4 h-4 text-amberGold-400"></i> সংবাদকর্মীদের আইনি সুরক্ষা ও অধিকার
         </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-royal-900 mb-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-velvet-900 mb-4">
           মিডিয়া আইন, পেশাগত নিরাপত্তা ও আইনি সহায়তা
         </h2>
         <p class="text-slate-600 text-base sm:text-lg">
@@ -403,44 +523,43 @@
         </p>
       </div>
 
-      <!-- 4 Legal & Press Rights Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div class="bg-white p-7 rounded-3xl border border-ivory-200 hover:border-brass-500 shadow-card transition-all">
-          <div class="w-12 h-12 rounded-2xl bg-royal-900 text-brass-400 flex items-center justify-center mb-5">
+        <div class="bg-white p-7 rounded-3xl border border-silk-200 hover:border-amberGold-500 shadow-card transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-5">
             <i data-lucide="book-open" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-royal-900 mb-2.5">তথ্য অধিকার আইন (RTI) সহায়তা</h3>
+          <h3 class="text-xl font-bold text-velvet-900 mb-2.5">তথ্য অধিকার আইন (RTI) সহায়তা</h3>
           <p class="text-slate-600 text-sm leading-relaxed">
             সরকারি-বেসরকারি দপ্তর থেকে বৈধ উপায়ে তথ্য সংগ্রহ ও তথ্য অধিকার আইনের সঠিক প্রয়োগে বিশেষজ্ঞ পরামর্শ ও ফরম্যাট সহায়তা।
           </p>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl border border-ivory-200 hover:border-brass-500 shadow-card transition-all">
-          <div class="w-12 h-12 rounded-2xl bg-royal-900 text-brass-400 flex items-center justify-center mb-5">
+        <div class="bg-white p-7 rounded-3xl border border-silk-200 hover:border-amberGold-500 shadow-card transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-5">
             <i data-lucide="shield-alert" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-royal-900 mb-2.5">থানা ও প্রশাসনিক আইনি সুরক্ষা</h3>
+          <h3 class="text-xl font-bold text-velvet-900 mb-2.5">থানা ও প্রশাসনিক আইনি সুরক্ষা</h3>
           <p class="text-slate-600 text-sm leading-relaxed">
             পেশাগত দায়িত্ব পালনকালে কোনো প্রতিবন্ধকতা বা হয়রানির শিকার হলে থানা পর্যায় থেকে শুরু করে প্রযোজ্য ক্ষেত্রে প্রাতিষ্ঠানিক আইনি সহায়তা।
           </p>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl border border-ivory-200 hover:border-brass-500 shadow-card transition-all">
-          <div class="w-12 h-12 rounded-2xl bg-royal-900 text-brass-400 flex items-center justify-center mb-5">
+        <div class="bg-white p-7 rounded-3xl border border-silk-200 hover:border-amberGold-500 shadow-card transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-5">
             <i data-lucide="gavel" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-royal-900 mb-2.5">প্রেস কাউন্সিল ও সংবাদ নীতিমালা</h3>
+          <h3 class="text-xl font-bold text-velvet-900 mb-2.5">প্রেস কাউন্সিল ও সংবাদ নীতিমালা</h3>
           <p class="text-slate-600 text-sm leading-relaxed">
             মানহানি ও সাইবার আইন এড়িয়ে নিরাপদ ও দায়িত্বশীল অনুসন্ধানী প্রতিবেদন লেখার নিয়মিত আইনি গাইডলাইন ও সম্পাদনা সহায়তা।
           </p>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl border border-ivory-200 hover:border-brass-500 shadow-card transition-all">
-          <div class="w-12 h-12 rounded-2xl bg-royal-900 text-brass-400 flex items-center justify-center mb-5">
+        <div class="bg-white p-7 rounded-3xl border border-silk-200 hover:border-amberGold-500 shadow-card transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-5">
             <i data-lucide="phone-call" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-royal-900 mb-2.5">জরুরি প্রেস হেল্পলাইন ও ভেরিফিকেশন</h3>
+          <h3 class="text-xl font-bold text-velvet-900 mb-2.5">জরুরি প্রেস হেল্পলাইন ও ভেরিফিকেশন</h3>
           <p class="text-slate-600 text-sm leading-relaxed">
             প্রশাসন বা আইনশৃঙ্খলা বাহিনীর সামনে তাৎক্ষণিক পরিচয় নিশ্চিতকরণে ২৪/৭ অনলাইন QR ভেরিফিকেশন ও কেন্দ্রীয় ডেস্ক সাপোর্ট।
           </p>
@@ -448,109 +567,114 @@
 
       </div>
 
-      <!-- CTA Button (#3) -->
+      <!-- CTA Button (#4) -->
       <div class="text-center mt-12">
         <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-           class="btn-brass inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg shadow-brass">
-          <span>আইনি সুরক্ষাসহ প্রতিনিধি হতে আবেদন করুন</span>
-          <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[2.5]"></i>
+           class="btn-apply-glow inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg sm:text-xl">
+          <span class="relative z-10">আইনি সুরক্ষাসহ প্রতিনিধি হতে আবেদন করুন</span>
+          <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[2.5] relative z-10"></i>
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== 5. SPECIAL BENEFITS FOR JOURNALISTS (12 COMPREHENSIVE CARDS) ==================== -->
-  <section id="benefits" class="py-16 sm:py-24 bg-ivory-100 border-b border-ivory-200">
+  <!-- ==================== 5. SPECIAL BENEFITS FOR JOURNALISTS ==================== -->
+  <section id="benefits" class="py-16 sm:py-24 bg-silk-50 border-b border-silk-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brass-500/20 text-royal-900 border border-brass-500/50 text-xs sm:text-sm font-bold mb-3">
-          <i data-lucide="gem" class="w-4 h-4 text-brass-600"></i> সংবাদকর্মীদের মর্যাদা, প্রশিক্ষণ ও কল্যাণ
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amberGold-400/20 text-velvet-900 border border-amberGold-500/50 text-xs sm:text-sm font-bold mb-3">
+          <i data-lucide="gem" class="w-4 h-4 text-amberGold-600"></i> সংবাদকর্মীদের মর্যাদা ও সুরক্ষা
         </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-royal-900 mb-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-velvet-900 mb-4">
           সাংবাদিকদের জন্য বিশেষ সুযোগ-সুবিধা
         </h2>
         <p class="text-slate-600 text-base sm:text-lg">
-          দৈনিক রাষ্ট্র বার্তার পক্ষ থেকে সংবাদকর্মীদের পেশাগত উৎকর্ষতা, সম্মাননা ও কল্যাণের লক্ষ্যে প্রযোজ্য ক্ষেত্রে নিচের সুবিধাসমূহ প্রদান করা হবে:
+          দৈনিক রাষ্ট্র বার্তার পক্ষ থেকে সংবাদকর্মীদের পেশাগত দক্ষতা বৃদ্ধি ও নিরাপত্তার লক্ষ্যে প্রযোজ্য ক্ষেত্রে নিম্নোক্ত সুযোগ-সুবিধাসমূহ প্রদান করা হবে:
         </p>
       </div>
 
-      <!-- 12 Benefits Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="globe" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">বিনামূল্যে অনলাইন সাংবাদিকতা</h3>
-          <p class="text-xs text-slate-600">কোনো মাসিক চার্জ ছাড়াই ডিজিটাল প্ল্যাটফর্মে নিয়মিত সংবাদ প্রকাশের সুযোগ।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">অনলাইনে বিনামূল্যে সাংবাদিকতা করার সুযোগ।</h3>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="graduation-cap" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">প্রশিক্ষণ ও ওয়ার্কশপ</h3>
-          <p class="text-xs text-slate-600">অভিজ্ঞ সম্পাদকদের মাধ্যমে অনলাইন ও অফলাইন সাংবাদিকতা প্রশিক্ষণ ও সনদ।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">অনলাইন ও অফলাইন প্রশিক্ষণ এবং ওয়ার্কশপ।</h3>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
+            <i data-lucide="scale" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">মিডিয়া আইন ও অধিকার সংক্রান্ত সহায়তা।</h3>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
+            <i data-lucide="compass" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">মাঠপর্যায়ে কাজের ক্ষেত্রে প্রয়োজনীয় দিকনির্দেশনা।</h3>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
+            <i data-lucide="shield" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">থানা পর্যায় থেকে শুরু করে প্রযোজ্য ক্ষেত্রে আইনি সহায়তা ও সহযোগিতা।</h3>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="heart-pulse" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">স্বাস্থ্য ও জীবনবীমা সুবিধা</h3>
-          <p class="text-xs text-slate-600">নিয়মিত ও সক্রিয় সংবাদকর্মীদের জন্য নির্বাচিত ক্ষেত্রে স্বাস্থ্য ও জীবনবীমা সুরক্ষা।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">নির্বাচিত ক্ষেত্রে স্বাস্থ্য ও জীবনবীমা সুবিধা।</h3>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="trophy" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">বিশেষ পুরস্কার ও সম্মাননা</h3>
-          <p class="text-xs text-slate-600">সেরা অনুসন্ধানী প্রতিবেদন ও সক্রিয় প্রতিনিধিদের বার্ষিক ক্রেস্ট ও সম্মাননা প্রদান।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">বিশেষ পুরস্কার ও সম্মাননা।</h3>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="network" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">আন্তর্জাতিক সাংবাদিক নেটওয়ার্ক</h3>
-          <p class="text-xs text-slate-600">দেশি-বিদেশি গণমাধ্যমকর্মী ও প্রেস ক্লাব নেটওয়ার্কের সাথে যুক্ত হওয়ার সুযোগ।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">আন্তর্জাতিক সাংবাদিক নেটওয়ার্কে যুক্ত হওয়ার সুযোগ।</h3>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="laptop" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">আধুনিক AI সফটওয়্যার টুলস</h3>
-          <p class="text-xs text-slate-600">সংবাদ লেখা, বানান সংশোধন ও ফটোকার্ড তৈরির প্রিমিয়াম টুলস ব্যবহারের সুবিধা।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">সফটওয়্যার ও আধুনিক টুলস ব্যবহারের সুবিধা।</h3>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
+        <div class="bg-white p-6 rounded-2xl border border-silk-200 hover:border-amberGold-500 shadow-sm hover:shadow-md transition-all">
+          <div class="w-11 h-11 rounded-xl bg-velvet-900 text-amberGold-300 flex items-center justify-center mb-4">
             <i data-lucide="book-open-check" class="w-5 h-5"></i>
           </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">গবেষণা ও ফিচার সহায়তা</h3>
-          <p class="text-xs text-slate-600">তথ্যবহুল বিশেষ প্রতিবেদন ও স্থানীয় উন্নয়নমূলক ফিচার তৈরিতে কেন্দ্রীয় সহায়তা।</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-ivory-200 hover:border-brass-500 shadow-sm hover:shadow-md transition-all">
-          <div class="w-11 h-11 rounded-xl bg-royal-900 text-brass-300 flex items-center justify-center mb-4">
-            <i data-lucide="badge-dollar-sign" class="w-5 h-5"></i>
-          </div>
-          <h3 class="font-bold text-royal-900 text-base mb-1">বিজ্ঞাপন ও বাণিজ্যিক কমিশন</h3>
-          <p class="text-xs text-slate-600">নিজ এলাকায় সংগৃহীত বিজ্ঞাপন ও বিশেষ ক্রোড়পত্রে আকর্ষণীয় সম্মানী সুবিধা।</p>
+          <h3 class="font-bold text-velvet-900 text-base leading-snug">গবেষণা ও প্রতিবেদন লেখায় সহযোগিতা।</h3>
         </div>
 
       </div>
 
-      <!-- Benefits CTA Button (#4) -->
+      <!-- CTA Button (#5) -->
       <div class="text-center mt-12">
         <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-           class="btn-brass inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl font-extrabold text-lg shadow-brass">
-          <span>এখনই আবেদন করুন</span>
-          <i data-lucide="arrow-right" class="w-5 h-5 stroke-[2.5]"></i>
+           class="btn-apply-glow inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl font-extrabold text-lg sm:text-xl">
+          <span class="relative z-10">এখনই আবেদন করুন</span>
+          <i data-lucide="arrow-right" class="w-5 h-5 stroke-[2.5] relative z-10"></i>
         </a>
       </div>
 
@@ -558,14 +682,14 @@
   </section>
 
   <!-- ==================== 6. AI TECHNOLOGY-DRIVEN AUTOMATIC NEWSROOM ==================== -->
-  <section id="ai-newsroom" class="py-16 sm:py-24 bg-ivory-50">
+  <section id="ai-newsroom" class="py-16 sm:py-24 bg-silk-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-900 text-brass-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-velvet-900 text-amberGold-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3">
           <i data-lucide="bot" class="w-4 h-4"></i> স্মার্ট নিউজ ম্যানেজমেন্ট
         </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-royal-900 mb-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-velvet-900 mb-4">
           AI প্রযুক্তিনির্ভর অটোমেটিক নিউজরুম
         </h2>
         <p class="text-slate-600 text-base sm:text-lg">
@@ -575,251 +699,133 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Pillar 1 -->
-        <div class="bg-white border border-ivory-200 hover:border-brass-500 rounded-3xl p-7 sm:p-8 shadow-card transition-all">
-          <div class="w-14 h-14 rounded-2xl bg-royal-900 text-brass-300 flex items-center justify-center text-2xl mb-6 shadow">
+        <div class="bg-white border border-silk-200 hover:border-amberGold-500 rounded-3xl p-7 sm:p-8 shadow-card transition-all">
+          <div class="w-14 h-14 rounded-2xl bg-velvet-900 text-amberGold-300 flex items-center justify-center text-2xl mb-6 shadow">
             🤖
           </div>
-          <h3 class="text-2xl font-bold text-royal-900 mb-5">AI নিউজরুম ও অটোমেশন</h3>
+          <h3 class="text-2xl font-bold text-velvet-900 mb-5">AI নিউজরুম ও অটোমেশন</h3>
           <ul class="space-y-3.5 text-slate-700 text-base">
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>AI সংবাদ লেখা, রিরাইট ও সম্পাদনা।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>বাংলা ও ইংরেজি সাপোর্ট।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>একাধিক AI মডেল ও API Key।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>AI ভয়েসওভার ও সংবাদ শোনার সুবিধা।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>অটো নিউজ সংগ্রহ ও প্রকাশ।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>অটো ফটোকার্ড ও Facebook Sharing।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>AI সংবাদ লেখা, রিরাইট ও সম্পাদনা।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>বাংলা ও ইংরেজি সাপোর্ট।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>একাধিক AI মডেল ও API Key।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>AI ভয়েসওভার ও সংবাদ শোনার সুবিধা।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>অটো নিউজ সংগ্রহ ও প্রকাশ।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>অটো ফটোকার্ড ও Facebook Sharing।</span></li>
           </ul>
         </div>
 
-        <!-- Pillar 2 -->
-        <div class="bg-royal-900 text-white border-2 border-brass-500 rounded-3xl p-7 sm:p-8 shadow-2xl relative overflow-hidden">
-          <div class="w-14 h-14 rounded-2xl bg-brass-500 text-royal-950 flex items-center justify-center text-2xl mb-6 shadow-brass">
+        <div class="bg-velvet-900 text-white border-2 border-amberGold-400 rounded-3xl p-7 sm:p-8 shadow-2xl relative overflow-hidden">
+          <div class="w-14 h-14 rounded-2xl bg-amberGold-400 text-velvet-950 flex items-center justify-center text-2xl mb-6 shadow-neon-gold">
             🖼️
           </div>
-          <h3 class="text-2xl font-bold text-brass-300 mb-5">ফটোকার্ড ও সোশ্যাল মিডিয়া</h3>
-          <ul class="space-y-4 text-ivory-100 text-base">
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brass-400 flex-shrink-0 mt-0.5"></i><span>আনলিমিটেড ফটোকার্ড টেমপ্লেট।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brass-400 flex-shrink-0 mt-0.5"></i><span>ফটোকার্ডে বিজ্ঞাপন।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brass-400 flex-shrink-0 mt-0.5"></i><span>ডিজিটাল পেপার কাটিং।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brass-400 flex-shrink-0 mt-0.5"></i><span>Facebook Share Branding।</span></li>
+          <h3 class="text-2xl font-bold text-amberGold-300 mb-5">ফটোকার্ড ও সোশ্যাল মিডিয়া</h3>
+          <ul class="space-y-4 text-silk-100 text-base">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberGold-300 flex-shrink-0 mt-0.5"></i><span>আনলিমিটেড ফটোকার্ড টেমপ্লেট।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberGold-300 flex-shrink-0 mt-0.5"></i><span>ফটোকার্ডে বিজ্ঞাপন।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberGold-300 flex-shrink-0 mt-0.5"></i><span>ডিজিটাল পেপার কাটিং।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberGold-300 flex-shrink-0 mt-0.5"></i><span>Facebook Share Branding।</span></li>
           </ul>
-          <div class="mt-8 p-4 rounded-2xl bg-royal-950/65 border border-brass-500/35 text-xs text-brass-300 leading-relaxed">
+          <div class="mt-8 p-4 rounded-2xl bg-velvet-950/65 border border-amberGold-400/35 text-xs text-amberGold-300 leading-relaxed">
             আপনার পাঠানো সংবাদ এক ক্লিকেই ব্র্যান্ডেড ফটোকার্ড ও ডিজিটাল পেপার কাটিংয়ে রূপান্তরিত হবে।
           </div>
         </div>
 
-        <!-- Pillar 3 -->
-        <div class="bg-white border border-ivory-200 hover:border-brass-500 rounded-3xl p-7 sm:p-8 shadow-card transition-all">
-          <div class="w-14 h-14 rounded-2xl bg-royal-900 text-brass-300 flex items-center justify-center text-2xl mb-6 shadow">
+        <div class="bg-white border border-silk-200 hover:border-amberGold-500 rounded-3xl p-7 sm:p-8 shadow-card transition-all">
+          <div class="w-14 h-14 rounded-2xl bg-velvet-900 text-amberGold-300 flex items-center justify-center text-2xl mb-6 shadow">
             🪪
           </div>
-          <h3 class="text-2xl font-bold text-royal-900 mb-5">সাংবাদিক ব্যবস্থাপনা</h3>
+          <h3 class="text-2xl font-bold text-velvet-900 mb-5">সাংবাদিক ব্যবস্থাপনা</h3>
           <ul class="space-y-3.5 text-slate-700 text-base">
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>প্রতিনিধি নিবন্ধন ও ড্যাশবোর্ড।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>সংবাদ জমা ও অনুমোদন।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>OTP ভেরিফিকেশন।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>QR Code-সহ অটোমেটিক ID Card।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>সাংবাদিক প্রোফাইল।</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-royal-700 flex-shrink-0 mt-0.5"></i><span>SMS ও ইমেইল নোটিফিকেশন।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>প্রতিনিধি নিবন্ধন ও ড্যাশবোর্ড।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>সংবাদ জমা ও অনুমোদন।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>OTP ভেরিফিকেশন।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>QR Code-সহ অটোমেটিক ID Card।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>সাংবাদিক প্রোফাইল।</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-velvet-700 flex-shrink-0 mt-0.5"></i><span>SMS ও ইমেইল নোটিফিকেশন।</span></li>
           </ul>
-        </div>
-
-      </div>
-
-      <!-- AI Section CTA Button (#5) -->
-      <div class="text-center mt-12">
-        <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-           class="btn-brass inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg shadow-brass">
-          <i data-lucide="user-plus" class="w-5 h-5 stroke-[2.5]"></i>
-          <span>সাংবাদিক হিসেবে আবেদন করুন</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== 7. OFFICIAL DOCUMENTS & DASHBOARD PACKAGE ==================== -->
-  <section class="py-16 sm:py-24 bg-ivory-100 border-y border-ivory-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-900 text-brass-300 text-xs sm:text-sm font-bold mb-3">
-          <i data-lucide="folder-check" class="w-4 h-4"></i> অনুমোদন পরবর্তী প্রাতিষ্ঠানিক প্যাকেজ
-        </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-royal-900 mb-4">
-          সাংবাদিক ডকুমেন্ট ও অনলাইন ড্যাশবোর্ড
-        </h2>
-        <p class="text-slate-600 text-base sm:text-lg">
-          যাচাই ও অনুমোদন সম্পন্ন হলে প্রতিটি প্রতিনিধি নিচের ৭টি অফিসিয়াল সুবিধা ও ডকুমেন্ট লাভ করবেন:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- 7 Deliverables List -->
-        <div class="lg:col-span-6 space-y-3">
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">১</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">সাংবাদিক পরিচয়পত্র (ID Card)।</span>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">২</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">QR Code-সহ ডিজিটাল পরিচয়পত্র।</span>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">৩</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">গুরুত্বপূর্ণ প্রাতিষ্ঠানিক ডকুমেন্ট ও নিয়োগপত্র।</span>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">৪</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">সংবাদপত্রের অনলাইন অ্যাকাউন্ট।</span>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">৫</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">ব্যক্তিগত সাংবাদিক ড্যাশবোর্ড।</span>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">৬</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">সংবাদ জমা ও প্রকাশের নিয়মাবলি।</span>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-200 shadow-sm">
-            <span class="w-9 h-9 rounded-xl bg-royal-900 text-brass-300 font-bold flex items-center justify-center flex-shrink-0">৭</span>
-            <span class="font-bold text-royal-900 text-base sm:text-lg">প্রয়োজনীয় প্রশিক্ষণ ও দিকনির্দেশনা।</span>
-          </div>
-        </div>
-
-        <!-- Sample Dashboard & Appointment Letter Preview -->
-        <div class="lg:col-span-6 bg-white p-6 rounded-3xl border border-ivory-200 shadow-xl relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-sm font-bold text-royal-900">সংবাদপত্রের অনলাইন ড্যাশবোর্ড</span>
-            <span class="px-3 py-0.5 rounded-full bg-red-100 text-crimson-700 border border-red-300 text-xs font-bold">নমুনা (SAMPLE)</span>
-          </div>
-
-          <div class="bg-royal-950 text-white rounded-2xl p-5 border border-brass-500/50 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-              <span class="sample-stamp px-4 py-1.5 rounded font-extrabold text-xl uppercase bg-royal-950/85">নমুনা ড্যাশবোর্ড</span>
-            </div>
-
-            <div class="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
-              <div class="flex items-center gap-1.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-              </div>
-              <span class="text-xs text-brass-300 font-semibold">Dainik Rashtra Barta — Reporter Panel</span>
-            </div>
-
-            <div class="grid grid-cols-3 gap-3 mb-4">
-              <div class="bg-royal-800 p-3 rounded-xl border border-white/10">
-                <p class="text-[11px] text-ivory-200/75">মোট সংবাদ</p>
-                <p class="text-xl font-extrabold text-brass-300">৬৪টি</p>
-              </div>
-              <div class="bg-royal-800 p-3 rounded-xl border border-white/10">
-                <p class="text-[11px] text-ivory-200/75">ফটোকার্ড</p>
-                <p class="text-xl font-extrabold text-emerald-400">অটো</p>
-              </div>
-              <div class="bg-royal-800 p-3 rounded-xl border border-white/10">
-                <p class="text-[11px] text-ivory-200/75">ID স্ট্যাটাস</p>
-                <p class="text-xl font-extrabold text-brass-400">ভেরিফায়েড</p>
-              </div>
-            </div>
-
-            <div class="space-y-2.5 text-xs">
-              <div class="bg-white/5 p-3 rounded-xl flex items-center justify-between">
-                <span class="flex items-center gap-2"><i data-lucide="pen-tool" class="w-4 h-4 text-brass-400"></i> AI সংবাদ লেখক ও সম্পাদক প্যানেল</span>
-                <span class="px-2 py-0.5 bg-brass-500 text-royal-950 rounded font-bold text-[10px]">সক্রিয়</span>
-              </div>
-              <div class="bg-white/5 p-3 rounded-xl flex items-center justify-between">
-                <span class="flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4 text-brass-400"></i> অফিসিয়াল নিয়োগপত্র ও প্রত্যয়নপত্র</span>
-                <span class="text-brass-300 font-semibold">PDF ডাউনলোড</span>
-              </div>
-            </div>
-          </div>
-
-          <p class="text-center text-xs text-slate-500 mt-3">* অনুমোদনের পর আপনার নিজস্ব ইউজার আইডি ও পাসওয়ার্ড বুঝিয়ে দেওয়া হবে</p>
         </div>
 
       </div>
 
       <!-- CTA Button (#6) -->
-      <div class="text-center mt-14">
+      <div class="text-center mt-12">
         <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-           class="btn-brass inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl font-extrabold text-lg shadow-brass">
-          <i data-lucide="check-square" class="w-5 h-5 stroke-[2.5]"></i>
-          <span>চূড়ান্ত আবেদন সম্পন্ন করুন</span>
+           class="btn-apply-glow inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg sm:text-xl">
+          <i data-lucide="user-plus" class="w-5 h-5 stroke-[2.5] relative z-10"></i>
+          <span class="relative z-10">সাংবাদিক হিসেবে আবেদন করুন</span>
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== 8. 3-STEP APPLICATION PROCESS ==================== -->
-  <section id="process" class="py-16 sm:py-24 bg-royal-900 text-white">
+  <!-- ==================== 7. 3-STEP APPLICATION PROCESS ==================== -->
+  <section id="process" class="py-16 sm:py-24 bg-velvet-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brass-500/20 text-brass-300 border border-brass-500/45 text-xs sm:text-sm font-bold mb-3">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amberGold-400/20 text-amberGold-300 border border-amberGold-400/45 text-xs sm:text-sm font-bold mb-3">
           <i data-lucide="git-commit-horizontal" class="w-4 h-4"></i> সহজ ও দ্রুত প্রক্রিয়া
         </span>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">আবেদন প্রক্রিয়া</h2>
-        <p class="text-ivory-100/85 text-base sm:text-lg">
+        <p class="text-silk-100/85 text-base sm:text-lg">
           মাত্র তিনটি সহজ ধাপ অনুসরণ করে দৈনিক রাষ্ট্র বার্তার সাংবাদিক প্রতিনিধি হিসেবে যুক্ত হোন:
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-royal-800/90 border border-brass-500/40 rounded-3xl p-8">
-          <div class="w-14 h-14 rounded-2xl bg-brass-500 text-royal-950 font-heading font-extrabold text-2xl flex items-center justify-center mb-6 shadow-brass">
+        <div class="bg-velvet-800/90 border border-amberGold-400/40 rounded-3xl p-8">
+          <div class="w-14 h-14 rounded-2xl bg-amberGold-400 text-velvet-950 font-heading font-extrabold text-2xl flex items-center justify-center mb-6 shadow-neon-gold">
             ধাপ ১
           </div>
-          <h3 class="text-2xl font-bold text-brass-300 mb-3">আবেদন ফর্ম পূরণ</h3>
-          <p class="text-ivory-100 text-base sm:text-lg leading-relaxed">
+          <h3 class="text-2xl font-bold text-amberGold-300 mb-3">আবেদন ফর্ম পূরণ</h3>
+          <p class="text-silk-100 text-base sm:text-lg leading-relaxed">
             Google Form-এর মাধ্যমে আপনার সঠিক তথ্য দিয়ে চূড়ান্ত আবেদন জমা দিন।
           </p>
         </div>
 
-        <div class="bg-royal-800/90 border border-brass-500/40 rounded-3xl p-8">
-          <div class="w-14 h-14 rounded-2xl bg-brass-500 text-royal-950 font-heading font-extrabold text-2xl flex items-center justify-center mb-6 shadow-brass">
+        <div class="bg-velvet-800/90 border border-amberGold-400/40 rounded-3xl p-8">
+          <div class="w-14 h-14 rounded-2xl bg-amberGold-400 text-velvet-950 font-heading font-extrabold text-2xl flex items-center justify-center mb-6 shadow-neon-gold">
             ধাপ ২
           </div>
-          <h3 class="text-2xl font-bold text-brass-300 mb-3">তথ্য যাচাইকরণ</h3>
-          <p class="text-ivory-100 text-base sm:text-lg leading-relaxed">
+          <h3 class="text-2xl font-bold text-amberGold-300 mb-3">তথ্য যাচাইকরণ</h3>
+          <p class="text-silk-100 text-base sm:text-lg leading-relaxed">
             সম্পাদকীয় পর্ষদ কর্তৃক আপনার আবেদন ও প্রদত্ত তথ্য যাচাই করা হবে।
           </p>
         </div>
 
-        <div class="bg-royal-800/90 border border-brass-500/40 rounded-3xl p-8">
-          <div class="w-14 h-14 rounded-2xl bg-brass-500 text-royal-950 font-heading font-extrabold text-2xl flex items-center justify-center mb-6 shadow-brass">
+        <div class="bg-velvet-800/90 border border-amberGold-400/40 rounded-3xl p-8">
+          <div class="w-14 h-14 rounded-2xl bg-amberGold-400 text-velvet-950 font-heading font-extrabold text-2xl flex items-center justify-center mb-6 shadow-neon-gold">
             ধাপ ৩
           </div>
-          <h3 class="text-2xl font-bold text-brass-300 mb-3">অ্যাকাউন্ট ও কার্ড প্রদান</h3>
-          <p class="text-ivory-100 text-base sm:text-lg leading-relaxed">
+          <h3 class="text-2xl font-bold text-amberGold-300 mb-3">অ্যাকাউন্ট ও কার্ড প্রদান</h3>
+          <p class="text-silk-100 text-base sm:text-lg leading-relaxed">
             অনুমোদন সাপেক্ষে সাংবাদিক অ্যাকাউন্ট, পরিচয়পত্র ও প্রয়োজনীয় নির্দেশনা প্রদান করা হবে।
           </p>
         </div>
       </div>
 
-      <!-- Process CTA Button (#7) -->
+      <!-- CTA Button (#7) -->
       <div class="text-center mt-12">
         <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-           class="btn-brass inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg shadow-brass">
-          <span>এখনই ধাপ ১ সম্পন্ন করুন</span>
-          <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[2.5]"></i>
+           class="btn-apply-glow inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-lg sm:text-xl">
+          <span class="relative z-10">এখনই ধাপ ১ সম্পন্ন করুন</span>
+          <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[2.5] relative z-10"></i>
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== 9. FINAL CALL-TO-ACTION SECTION ==================== -->
-  <section class="py-16 sm:py-24 bg-gradient-to-b from-ivory-100 to-ivory-50">
+  <!-- ==================== 8. FINAL CALL-TO-ACTION SECTION ==================== -->
+  <section class="py-16 sm:py-24 bg-gradient-to-b from-silk-100 to-silk-50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-royal-950 text-white rounded-[2rem] p-8 sm:p-14 text-center border-2 border-brass-500 shadow-2xl relative overflow-hidden">
+      <div class="bg-velvet-950 text-white rounded-[2rem] p-8 sm:p-14 text-center border-2 border-amberGold-400 shadow-2xl relative overflow-hidden">
         
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,155,60,0.22)_0%,transparent_70%)] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(235,194,56,0.22)_0%,transparent_70%)] pointer-events-none"></div>
 
         <div class="relative z-10">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brass-500/20 text-brass-300 border border-brass-500/45 text-xs sm:text-sm font-bold mb-5">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amberGold-400/20 text-amberGold-300 border border-amberGold-400/45 text-xs sm:text-sm font-bold mb-5">
             <i data-lucide="newspaper" class="w-4 h-4"></i> চূড়ান্ত আহ্বান
           </div>
 
@@ -827,58 +833,58 @@
             সাংবাদিকতার নতুন যাত্রায় আপনিও হোন আমাদের সহযাত্রী!
           </h2>
 
-          <p class="text-ivory-100/90 text-lg sm:text-xl max-w-2xl mx-auto mb-9 leading-relaxed">
+          <p class="text-silk-100/90 text-lg sm:text-xl max-w-2xl mx-auto mb-9 leading-relaxed">
             আপনার এলাকায় ঘটে যাওয়া গুরুত্বপূর্ণ সংবাদ ও জনস্বার্থসংশ্লিষ্ট ঘটনা তুলে ধরতে দৈনিক রাষ্ট্র বার্তার সঙ্গে যুক্ত হওয়ার আবেদন করুন।
           </p>
 
           <!-- Final CTA Button (#8) -->
           <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-             class="btn-brass pulse-brass inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-extrabold text-lg sm:text-xl shadow-brass-lg">
-            <i data-lucide="send" class="w-6 h-6 stroke-[2.5]"></i>
-            <span>চূড়ান্ত আবেদন জমা দিন</span>
+             class="btn-apply-glow inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-extrabold text-lg sm:text-xl border-2 border-amberGold-200">
+            <i data-lucide="send" class="w-6 h-6 stroke-[2.6] relative z-10"></i>
+            <span class="relative z-10">চূড়ান্ত আবেদন জমা দিন</span>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 10. FOOTER ==================== -->
-  <footer class="bg-royal-950 text-ivory-200 border-t-4 border-brass-500 pt-14 pb-8">
+  <!-- ==================== 9. FOOTER ==================== -->
+  <footer class="bg-velvet-950 text-silk-200 border-t-4 border-amberGold-400 pt-14 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
         <div>
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brass-300 to-brass-600 p-0.5">
-              <div class="w-full h-full bg-royal-950 rounded-[10px] flex flex-col items-center justify-center">
-                <span class="font-heading text-brass-400 font-extrabold text-lg leading-none">রা</span>
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amberGold-300 to-amberGold-600 p-0.5">
+              <div class="w-full h-full bg-velvet-950 rounded-[10px] flex flex-col items-center justify-center">
+                <span class="font-heading text-amberGold-300 font-extrabold text-lg leading-none">রা</span>
                 <span class="text-[7px] tracking-widest text-white/80 uppercase">বার্তা</span>
               </div>
             </div>
             <span class="font-heading text-2xl font-extrabold text-white">দৈনিক রাষ্ট্র বার্তা</span>
           </div>
-          <p class="text-sm text-ivory-200/80 leading-relaxed">
+          <p class="text-sm text-silk-200/80 leading-relaxed">
             গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত একটি আধুনিক, প্রযুক্তিনির্ভর জাতীয় সংবাদমাধ্যম। সত্য ও বস্তুনিষ্ঠ সংবাদ পরিবেশনে আমরা অঙ্গীকারবদ্ধ।
           </p>
         </div>
 
         <div>
-          <h3 class="text-brass-300 font-bold text-lg mb-4">প্রাতিষ্ঠানিক তথ্য</h3>
-          <ul class="space-y-2.5 text-sm text-ivory-200">
-            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-brass-400"></i><span>নিবন্ধন: গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-brass-400"></i><span>সিস্টেম: AI অটোমেটিক নিউজরুম ও ভেরিফিকেশন পোর্টাল</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="file-check" class="w-4 h-4 text-brass-400"></i><span>শাখা: সাংবাদিক নিয়োগ ও প্রতিনিধি ব্যবস্থাপনা বিভাগ</span></li>
+          <h3 class="text-amberGold-300 font-bold text-lg mb-4">প্রাতিষ্ঠানিক তথ্য</h3>
+          <ul class="space-y-2.5 text-sm text-silk-200">
+            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-amberGold-300"></i><span>নিবন্ধন: গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-amberGold-300"></i><span>সিস্টেম: AI অটোমেটিক নিউজরুম ও ভেরিফিকেশন পোর্টাল</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="file-check" class="w-4 h-4 text-amberGold-300"></i><span>শাখা: সাংবাদিক নিয়োগ ও প্রতিনিধি ব্যবস্থাপনা বিভাগ</span></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-brass-300 font-bold text-lg mb-4">যোগাযোগ ও আবেদন</h3>
-          <ul class="space-y-2.5 text-sm text-ivory-200 mb-4">
-            <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-brass-400"></i><span>কেন্দ্রীয় বার্তা ও সম্পাদকীয় কার্যালয়, বাংলাদেশ</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4 text-brass-400"></i><span>অনলাইন নিয়োগ পোর্টাল (২৪/৭ সক্রিয়)</span></li>
+          <h3 class="text-amberGold-300 font-bold text-lg mb-4">যোগাযোগ ও আবেদন</h3>
+          <ul class="space-y-2.5 text-sm text-silk-200 mb-4">
+            <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-amberGold-300"></i><span>কেন্দ্রীয় বার্তা ও সম্পাদকীয় কার্যালয়, বাংলাদেশ</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4 text-amberGold-300"></i><span>অনলাইন নিয়োগ পোর্টাল (২৪/৭ সক্রিয়)</span></li>
           </ul>
           <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-1.5 text-brass-300 hover:text-brass-400 font-bold text-sm underline underline-offset-4">
+             class="inline-flex items-center gap-1.5 text-amberGold-300 hover:text-amberGold-200 font-bold text-sm underline underline-offset-4">
             <span>সরাসরি আবেদন ফর্ম খুলুন</span>
             <i data-lucide="external-link" class="w-4 h-4"></i>
           </a>
@@ -886,10 +892,10 @@
       </div>
 
       <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-        <p class="text-brass-300 font-heading font-bold text-base sm:text-lg">
+        <p class="text-amberGold-300 font-heading font-bold text-base sm:text-lg">
           দৈনিক রাষ্ট্র বার্তা — সত্য, বস্তুনিষ্ঠতা ও জনস্বার্থে সাংবাদিকতা।
         </p>
-        <p class="text-xs sm:text-sm text-ivory-200/70">
+        <p class="text-xs sm:text-sm text-silk-200/70">
           &copy; ২০২৬ দৈনিক রাষ্ট্র বার্তা। সর্বস্বত্ব সংরক্ষিত।
         </p>
       </div>
@@ -897,26 +903,26 @@
     </div>
   </footer>
 
-  <!-- ==================== 11. SPECIAL 25-SECOND POPUP WITH VOICE & AUTO-REDIRECT ==================== -->
-  <div id="recruitment-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-royal-950/85 backdrop-blur-sm">
-    <div class="bg-ivory-50 rounded-3xl max-w-lg w-full border-2 border-brass-500 shadow-2xl overflow-hidden animate-pop relative">
+  <!-- ==================== 10. SPECIAL 30-SECOND POPUP WITH AUTO-REDIRECT ==================== -->
+  <div id="recruitment-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-velvet-950/85 backdrop-blur-sm">
+    <div class="bg-silk-50 rounded-3xl max-w-lg w-full border-2 border-amberGold-400 shadow-2xl overflow-hidden animate-pop relative">
       
-      <div class="bg-royal-900 px-6 py-4 flex items-center justify-between border-b-2 border-brass-500">
+      <div class="bg-velvet-900 px-6 py-4 flex items-center justify-between border-b-2 border-amberGold-400">
         <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-brass-400 animate-ping"></span>
-          <span class="text-brass-300 font-bold text-xs sm:text-sm tracking-wide">দৈনিক রাষ্ট্র বার্তা — বিশেষ বার্তা</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-amberGold-300 animate-ping"></span>
+          <span class="text-amberGold-300 font-bold text-xs sm:text-sm tracking-wide">দৈনিক রাষ্ট্র বার্তা — বিশেষ বার্তা</span>
         </div>
-        <button id="close-modal-btn" aria-label="বন্ধ করুন" class="w-8 h-8 rounded-full bg-white/10 hover:bg-crimson-600 text-white flex items-center justify-center transition-colors">
+        <button id="close-modal-btn" aria-label="বন্ধ করুন" class="w-8 h-8 rounded-full bg-white/10 hover:bg-ruby-600 text-white flex items-center justify-center transition-colors">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <div class="p-6 sm:p-8 text-center">
-        <div class="w-16 h-16 mx-auto rounded-2xl bg-brass-500/20 border border-brass-500 text-royal-900 flex items-center justify-center mb-4">
-          <i data-lucide="id-card" class="w-8 h-8 text-brass-600"></i>
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-amberGold-400/20 border border-amberGold-500 text-velvet-900 flex items-center justify-center mb-4">
+          <i data-lucide="id-card" class="w-8 h-8 text-amberGold-600"></i>
         </div>
 
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-royal-900 mb-3">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-velvet-900 mb-3">
           আপনার সাংবাদিকতার যাত্রা শুরু করতে প্রস্তুত?
         </h3>
 
@@ -924,23 +930,23 @@
           আপনার সাংবাদিক আইডি কার্ড এবং গুরুত্বপূর্ণ ডকুমেন্টগুলো পাঠানো হবে এবং সংবাদপত্রের একাউন্ট দেয়া হবে ও সবকিছু বুঝিয়ে দেয়া হবে। আবেদনটি জমা দিন।
         </p>
 
-        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed bg-white p-3.5 rounded-xl border border-ivory-200 mb-5">
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed bg-white p-3.5 rounded-xl border border-silk-200 mb-5">
           আপনার আবেদন জমা দেওয়ার পর যাচাই ও অনুমোদন সাপেক্ষে সাংবাদিক পরিচয়পত্র, গুরুত্বপূর্ণ প্রাতিষ্ঠানিক ডকুমেন্ট এবং দৈনিক রাষ্ট্র বার্তার সংবাদপত্রের অনলাইন অ্যাকাউন্ট প্রদান ও ব্যবহারের নিয়মাবলি বুঝিয়ে দেওয়া হবে। এখনই আপনার চূড়ান্ত আবেদন সম্পন্ন করুন।
         </p>
 
-        <div class="mb-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100/80 border border-amber-400 text-royal-900 text-xs sm:text-sm font-semibold">
-          <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-brass-600"></i>
-          <span>আবেদন ফর্মে নিয়ে যাওয়া হচ্ছে: <strong id="redirect-countdown" class="text-crimson-600 font-extrabold">৫</strong> সেকেন্ড...</span>
+        <div class="mb-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100/90 border border-amber-400 text-velvet-900 text-xs sm:text-sm font-semibold">
+          <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-amberGold-600"></i>
+          <span>আবেদন ফর্মে নিয়ে যাওয়া হচ্ছে: <strong id="redirect-countdown" class="text-ruby-600 font-extrabold">৫</strong> সেকেন্ড...</span>
         </div>
 
         <!-- Modal CTA Button (#9) -->
         <a href="https://forms.gle/ipdv2jRRCBfCdaKb7" id="modal-apply-btn"
-           class="btn-brass w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl font-extrabold text-base sm:text-lg shadow-brass">
-          <span>চূড়ান্ত আবেদন জমা দিন</span>
-          <i data-lucide="arrow-right" class="w-5 h-5 stroke-[2.5]"></i>
+           class="btn-apply-glow w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl font-extrabold text-base sm:text-lg">
+          <span class="relative z-10">চূড়ান্ত আবেদন জমা দিন</span>
+          <i data-lucide="arrow-right" class="w-5 h-5 stroke-[2.5] relative z-10"></i>
         </a>
 
-        <button id="dismiss-text-btn" class="mt-3 text-xs text-slate-500 hover:text-royal-900 underline">
+        <button id="dismiss-text-btn" class="mt-3 text-xs text-slate-500 hover:text-velvet-900 underline">
           এখন নয়, পেজটি আরও দেখুন
         </button>
       </div>
@@ -948,18 +954,70 @@
   </div>
 
   <!-- ==================== SCRIPTS ==================== -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     lucide.createIcons();
 
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
     const toBanglaNumber = (num) => String(num).padStart(2, '0').split('').map(d => banglaDigits[d] || d).join('');
 
-    // ==================== 1. TOP URGENCY COUNTDOWN CLOCK ====================
+    // ==================== 1. YOUTUBE AUTOPLAY + AUTO UNMUTE ENGINE ====================
+    let ytPlayer = null;
+    let audioUnlocked = false;
+    const statusBadge = document.getElementById('audio-status-badge');
+
+    function enableVideoSound() {
+      if (!ytPlayer) return;
+      try {
+        ytPlayer.playVideo();
+        ytPlayer.unMute();
+        ytPlayer.setVolume(100);
+        if (typeof ytPlayer.isMuted === 'function' && !ytPlayer.isMuted()) {
+          audioUnlocked = true;
+          statusBadge.innerHTML = `<i data-lucide="volume-2" class="w-3.5 h-3.5"></i><span>সাউন্ড সক্রিয় (১০০%)</span>`;
+          lucide.createIcons();
+        }
+      } catch (e) {}
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      ytPlayer = new YT.Player('yt-player-container', {
+        videoId: 'Zz_A4x22pPE',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          loop: 1,
+          playlist: 'Zz_A4x22pPE',
+          controls: 1,
+          rel: 0,
+          playsinline: 1
+        },
+        events: {
+          onReady: function (event) {
+            event.target.playVideo();
+            setTimeout(enableVideoSound, 450);
+          },
+          onStateChange: function (event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+              enableVideoSound();
+            }
+          }
+        }
+      });
+    };
+
+    // Instant unmute on user's first touch, click, scroll, or keypress
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => {
+        enableVideoSound();
+      }, { once: true, passive: true });
+    });
+
+    // ==================== 2. CONTINUOUS RUNNING COUNTDOWN CLOCK ====================
     const hoursEl = document.getElementById('timer-hours');
     const minutesEl = document.getElementById('timer-minutes');
     const secondsEl = document.getElementById('timer-seconds');
 
-    // Persist 5 hours 42 minutes countdown in sessionStorage so it ticks continuously
     let remainingSeconds = parseInt(sessionStorage.getItem('drb_urgency_timer'), 10);
     if (isNaN(remainingSeconds) || remainingSeconds <= 0) {
       remainingSeconds = (5 * 3600) + (42 * 60) + 59;
@@ -976,15 +1034,15 @@
 
       if (remainingSeconds > 0) {
         remainingSeconds -= 1;
-        sessionStorage.setItem('drb_urgency_timer', remainingSeconds);
       } else {
-        remainingSeconds = 3600; // Reset to 1 hour if it reaches 0
+        remainingSeconds = (5 * 3600) + (42 * 60) + 59;
       }
+      sessionStorage.setItem('drb_urgency_timer', remainingSeconds);
     }
     updateTopClock();
     setInterval(updateTopClock, 1000);
 
-    // ==================== 2. MOBILE MENU ====================
+    // ==================== 3. MOBILE MENU ====================
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
@@ -992,90 +1050,7 @@
     mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-    // ==================== 3. AUTOMATIC BANGLA VOICE ENGINE ====================
-    const WELCOME_VOICE_TEXT = "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক নিবন্ধিত দৈনিক রাষ্ট্র বার্তার সাংবাদিক নিয়োগ পোর্টালে আপনাকে স্বাগতম। চূড়ান্ত আবেদন জমা দিন বাটনে ক্লিক করে এখনই আপনার আবেদন সম্পন্ন করুন।";
-    const POPUP_VOICE_TEXT = "আপনার সাংবাদিক আইডি কার্ড এবং গুরুত্বপূর্ণ ডকুমেন্টগুলো পাঠানো হবে এবং সংবাদপত্রের একাউন্ট দেয়া হবে ও সবকিছু বুঝিয়ে দেয়া হবে। আবেদনটি জমা দিন।";
-
-    const voiceToggleBtn = document.getElementById('voice-toggle-btn');
-    const voiceWaves = document.getElementById('voice-waves');
-    const voiceIcon = document.getElementById('voice-icon');
-    const voiceLabel = document.getElementById('voice-label');
-
-    let isMuted = false;
-    let welcomeSpoken = false;
-
-    function setSpeakingUI(active) {
-      if (active) {
-        voiceWaves.classList.remove('hidden');
-        voiceWaves.classList.add('inline-flex');
-        voiceIcon.classList.add('hidden');
-        voiceLabel.textContent = 'ভয়েস চলছে...';
-      } else {
-        voiceWaves.classList.add('hidden');
-        voiceWaves.classList.remove('inline-flex');
-        voiceIcon.classList.remove('hidden');
-        voiceLabel.textContent = isMuted ? 'ভয়েস বন্ধ' : 'ভয়েস শুনুন';
-      }
-    }
-
-    function speakBangla(text, isWelcome = false) {
-      if (isMuted || !('speechSynthesis' in window)) return;
-
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'bn-BD';
-      utterance.rate = 0.96;
-      utterance.pitch = 1.05;
-
-      const voices = window.speechSynthesis.getVoices();
-      const bnVoice = voices.find(v => v.lang.toLowerCase().includes('bn'));
-      if (bnVoice) utterance.voice = bnVoice;
-
-      utterance.onstart = () => {
-        if (isWelcome) welcomeSpoken = true;
-        setSpeakingUI(true);
-      };
-      utterance.onend = () => setSpeakingUI(false);
-      utterance.onerror = () => setSpeakingUI(false);
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function initAutoVoice() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.getVoices();
-        setTimeout(() => {
-          if (!welcomeSpoken && !isMuted) speakBangla(WELCOME_VOICE_TEXT, true);
-        }, 500);
-      }
-    }
-
-    window.addEventListener('load', initAutoVoice);
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = () => {
-        if (!welcomeSpoken && !isMuted) speakBangla(WELCOME_VOICE_TEXT, true);
-      };
-    }
-
-    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
-      window.addEventListener(evt, () => {
-        if (!welcomeSpoken && !isMuted) speakBangla(WELCOME_VOICE_TEXT, true);
-      }, { once: true, passive: true });
-    });
-
-    voiceToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (window.speechSynthesis && window.speechSynthesis.speaking) {
-        window.speechSynthesis.cancel();
-        isMuted = true;
-        setSpeakingUI(false);
-      } else {
-        isMuted = false;
-        speakBangla(WELCOME_VOICE_TEXT, true);
-      }
-    });
-
-    // ==================== 4. 25-SECOND POPUP + AUTO-REDIRECT ====================
+    // ==================== 4. 30-SECOND POPUP + AUTO-REDIRECT TO GOOGLE FORM ====================
     const FORM_URL = 'https://forms.gle/ipdv2jRRCBfCdaKb7';
     const modal = document.getElementById('recruitment-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -1090,8 +1065,6 @@
       sessionStorage.setItem('drb_popup_closed', 'true');
       modal.classList.add('hidden');
       modal.classList.remove('flex');
-      if (window.speechSynthesis) window.speechSynthesis.cancel();
-      setSpeakingUI(false);
       if (redirectInterval) {
         clearInterval(redirectInterval);
         redirectInterval = null;
@@ -1103,8 +1076,6 @@
 
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-
-      speakBangla(POPUP_VOICE_TEXT, false);
 
       let secondsLeft = 5;
       countdownEl.textContent = banglaDigits[secondsLeft];
@@ -1125,7 +1096,7 @@
     }
 
     if (!popupDismissed) {
-      setTimeout(openPopupAndStartRedirect, 25000);
+      setTimeout(openPopupAndStartRedirect, 30000);
     }
 
     closeModalBtn.addEventListener('click', closePopup);
@@ -1135,4 +1106,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
